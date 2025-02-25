@@ -40,7 +40,7 @@ function FirstCard({ title, discription }: { title: string; discription: string 
               </p>
               <p className="text-slate-300">{discription}</p>
               <Button className="mt-8 sm:mt-14 rounded-3xl py-6 text-md px-6 bg-gradient-to-r from-green-400 to-green-600">
-                Let's Code
+                Let&apos;s Code
               </Button>
             </div>
           </div>
@@ -69,7 +69,7 @@ function SecondCard({ title, discription }: { title: string; discription: string
               </p>
               <p className="text-slate-300">{discription}</p>
               <Button className="mt-8 sm:mt-14 rounded-3xl py-6 text-md px-6 bg-gradient-to-r from-red-400 to-red-600">
-                Let's Code
+                Let&apos;s Code
               </Button>
             </div>
           </div>

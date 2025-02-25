@@ -12,8 +12,8 @@ export const HeroHighlight = ({
   className?: string;
   containerClassName?: string;
 }) => {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   function handleMouseMove({
     currentTarget,
@@ -21,11 +21,13 @@ export const HeroHighlight = ({
     clientY,
   }: React.MouseEvent<HTMLDivElement>) {
     if (!currentTarget) return;
-    let { left, top } = currentTarget.getBoundingClientRect();
+    
+    const { left, top } = currentTarget.getBoundingClientRect(); // Use const since values aren't reassigned
 
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
+
   return (
     <div
       className={cn(
@@ -86,7 +88,7 @@ export const Highlight = ({
         display: "inline",
       }}
       className={cn(
-        `relative inline-block pb-1   px-4 rounded-lg bg-gradient-to-r from-purple-400 to-purple-500 dark:from-indigo-500 dark:to-purple-500`,
+        `relative inline-block pb-1 px-4 rounded-lg bg-gradient-to-r from-purple-400 to-purple-500 dark:from-indigo-500 dark:to-purple-500`,
         className
       )}
     >
