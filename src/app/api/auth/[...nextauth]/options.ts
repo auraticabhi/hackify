@@ -2,7 +2,7 @@ import type { NextAuthOptions } from "next-auth";
 import GitHubProvider from 'next-auth/providers/github'
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const options: NextAuthOptions={
+export const options: NextAuthOptions = {
     providers: [
         GitHubProvider({
             clientId: process.env.GITHUB_ID as string,
@@ -22,15 +22,18 @@ export const options: NextAuthOptions={
                     placeholder: "your_password"
                 },
             },
-            async authorize(credentials: { username: string; password: string; }){
-                const user = {id: "77", name: "abhijeet", password: "hackify"}
-                if(credentials?.username === user.name && credentials?.password === user.password){
-                    return user
-                }else{
-                    return null
+            async authorize(credentials: Record<"username" | "password", string> | undefined) {
+                if (!credentials) {
+                    return null;
+                }
+
+                const user = { id: "77", name: "abhijeet", password: "hackify" };
+                if (credentials.username === user.name && credentials.password === user.password) {
+                    return user;
+                } else {
+                    return null;
                 }
             }
         })
     ],
-    
-}
+};

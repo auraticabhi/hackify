@@ -9,12 +9,12 @@ import React from "react";
 
 const Dashboard = () => {
 
-  const { data: session } = useSession({
+  useSession({
     required: true,
     onUnauthenticated() {
-        redirect('/api/auth/signin?callbackUrl=/dashboard'); // Corrected callbackUrl
+      redirect('/api/auth/signin?callbackUrl=/dashboard'); // Corrected callbackUrl
     },
-});
+  });
 
   const router = useRouter();
 

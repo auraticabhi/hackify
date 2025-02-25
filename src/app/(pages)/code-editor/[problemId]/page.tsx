@@ -20,11 +20,11 @@ const CodeEditor = () => {
   const { problemId } = useParams();
   const router = useRouter();
 
-  const { data: session } = useSession({
-      required: true,
-      onUnauthenticated() {
-          redirect(`/api/auth/signin?callbackUrl=/code-editor/${problemId}`); // Corrected callbackUrl
-      },
+  useSession({
+    required: true,
+    onUnauthenticated() {
+      redirect(`/api/auth/signin?callbackUrl=/code-editor/${problemId}`); // Corrected callbackUrl
+    },
   });
 
   const selectedProblem = codingProblems.find((p) => p.id.toString() === problemId);
@@ -41,7 +41,9 @@ const CodeEditor = () => {
     try {
       setOutput("Code compiled successfully");
     } catch (error: unknown) {
+      if (error instanceof Error) {
       setOutput(`Error: ${error.message}`);
+      }
     }
   };
 
